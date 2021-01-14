@@ -1,0 +1,45 @@
+<h3 class="text-dark">Current Player: {{ player }}</h3>
+<div class="mb-3" *ngIf="matchRounds === 0">
+    <h5>Play a Game of  
+        <button class="btn btn-outline-light" (click)="setMatchRounds(3)">3 matches</button> |
+        <button class="btn btn-outline-light" (click)="setMatchRounds(5)">5 matches</button>
+    </h5>
+</div>
+
+<div class="mb-3" *ngIf="matchRounds !== 0">
+    <h4>
+        Matches left: {{ matchRounds }}
+    </h4>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <h2>
+            <div class="winner-message">
+                'X' --> {{xScore}} <br> 'O' --> {{oScore}}
+            </div>
+        </h2>
+    </div>
+    <div class="col-md-6 col-xs-6" *ngIf="matchRounds != 0">
+        <button class="btn btn-dark mb-4" (click)="newGame()">Start New Match</button>
+        <br>
+        <button class="btn btn-outline-dark mb-4" (click)="clearGame()">Clear Board</button> * 
+        <button class="btn btn-danger mb-4" (click)="resetGame()">Reset Game</button>
+    </div>
+</div>
+
+<div>
+    <h4 class="winner-message" *ngIf="winner">
+        {{ winner }} won the match!!!
+    </h4>
+
+    <h1 class="winner-message" *ngIf="(xScore != 0 || oScore != 0) && matchRounds === 0 ">
+        {{ winner }} has won the Game!!!
+    </h1>
+</div>
+
+<main>
+    <app-square *ngFor="let val of squares; let i = index"
+    [value]="val"
+    (click)="makeMove(i)"></app-square>
+</main>

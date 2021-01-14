@@ -1,0 +1,32 @@
+main {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap: 0px;
+}
+
+app-square {
+    border: 1px gray solid;
+    height: 200px;
+}
+
+@media (max-width: 610px) {
+    main {
+        display: grid;
+        grid-template-columns: 95px 95px 95px;
+        grid-gap: 0px;
+    }
+
+    app-square {
+        border: 1px gray solid;
+        height: 95px;
+    }
+}
+
+.winner-message {
+    border: 1px solid #462507;
+    border-radius: 5px;
+    padding: 5px;
+    background: #e2a56b;
+    background: #e2a56b;
+    color: rgb(235, 235, 235);
+}
